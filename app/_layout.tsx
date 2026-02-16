@@ -1,14 +1,14 @@
-import { useColorScheme } from '@/hooks/use-color-scheme';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { StatusBar } from 'expo-status-bar';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import 'react-native-reanimated';
 
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 
-import "@/global.css";
+import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useThemeColor } from '@/hooks/use-theme-color';
-import ThemeView from '@/presentation/shared/ThemeView';
-import ThemeText from '@/presentation/ThemeText';
+import { allRoutes } from '@/constants/Routes';
+import "@/global.css";
 
 export default function RootLayout() {
   const backgroundColor = useThemeColor({}, 'background')
@@ -19,13 +19,36 @@ export default function RootLayout() {
 
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
 
-        <ThemeView margin >
-          <ThemeText type='h1' className='mt-10'>Hola mundo</ThemeText>
-        </ThemeView>
+        <Stack
+          screenOptions={{
+            headerShadowVisible: false,
+            contentStyle: {
+              backgroundColor: backgroundColor
+            },
+            headerStyle: {
+              backgroundColor: backgroundColor
+            },
+            animation: 'flip',
+          }}
+        >
+          <Stack.Screen
+            name="index"
+            options={{
+              title: 'ComponentsApp',
+            }} />
 
-        {/* <Stack>
+          {
+            allRoutes.map((route) => (
+              <Stack.Screen
+                key={ route.name }
+                name={ route.name }
+                options={{
+                  title: route.title,
+                }} />)
+            )
+          }
 
-        </Stack> */}
+        </Stack>
         <StatusBar style="auto" />
       </ThemeProvider>
     </GestureHandlerRootView>
