@@ -29,14 +29,14 @@ const Animation101Screen = () => {
         className='my-5'
         onPress={() => {
           fadeIn({});
-          startMovingFromTop({easing: Easing.elastic(1)});
+          startMovingFromTop({easing: Easing.elastic(1), duration: 700});
         }}
       >FadeIn</ThemedButton>
       <ThemedButton
         className='my-5'
         onPress={() => {
           fadeOut({});
-          movingToTop({callback: () => animatedTop.resetAnimation()});
+          movingToTop({duration: 700, callback: () => animatedTop.resetAnimation()});
         }}
       >FadeOut</ThemedButton>
     </ThemeView>

@@ -23,7 +23,7 @@ const useAnimation = () => {
         }).start(callback);
     }
 
-    const startMovingFromTop = ({initialPosition = -100 , duration = 700, toValue = 0, useNativeDriver = true, easing = Easing.ease, callback = () => {},}) => {
+    const startMovingFromTop = ({initialPosition = -100 , duration = 300, toValue = 0, useNativeDriver = true, easing = Easing.ease, callback = () => {},}) => {
         
         animatedTop.setValue(initialPosition)
 
@@ -36,7 +36,7 @@ const useAnimation = () => {
         }).start(callback)
     }
 
-    const movingToTop = ({duration = 700, toValue = -100, useNativeDriver = true, easing = Easing.ease, callback = () => {},}) => {
+    const movingToTop = ({duration = 300, toValue = -100, useNativeDriver = true, easing = Easing.ease, callback = () => {},}) => {
         Animated.timing(animatedTop, {
             toValue: toValue,
             duration: duration,
