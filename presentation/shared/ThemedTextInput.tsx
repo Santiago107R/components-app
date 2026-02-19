@@ -9,7 +9,7 @@ interface Props extends TextInputProps {
 const ThemedTextInput = ({ className, ...rest }: Props) => {
     return (
         <TextInput
-            className={`py-4 px-2 text-light-text text-dark-text ${className}`}
+            className={`py-4 px-2 text-light-text dark:text-dark-text ${className}`}
             placeholderTextColor={'grey'}
             {...rest}
         />
