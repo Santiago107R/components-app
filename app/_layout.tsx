@@ -9,6 +9,7 @@ import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useThemeColor } from '@/hooks/use-theme-color';
 import { allRoutes } from '@/constants/Routes';
 import "@/global.css";
+import { ThemeChangerProvider } from '@/presentation/context/ThemeChangerContext';
 
 export default function RootLayout() {
   const backgroundColor = useThemeColor({}, 'background')
@@ -17,8 +18,8 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView style={{ backgroundColor: backgroundColor, flex: 1 }}>
 
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-
+      <ThemeChangerProvider>
+      {/* <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}> */}
         <Stack
           screenOptions={{
             headerShadowVisible: false,
@@ -40,17 +41,19 @@ export default function RootLayout() {
           {
             allRoutes.map((route) => (
               <Stack.Screen
-                key={ route.name }
-                name={ route.name }
+                key={route.name}
+                name={route.name}
                 options={{
                   title: route.title,
+                  headerShown: route.title !== "Slides"
                 }} />)
             )
           }
 
         </Stack>
         <StatusBar style="auto" />
-      </ThemeProvider>
-    </GestureHandlerRootView>
+        {/* </ThemeProvider> */}
+      </ThemeChangerProvider>
+    </GestureHandlerRootView >
   );
 }
