@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "components-app",
+    "name": "Components RN",
     "slug": "components-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -19,7 +19,8 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.santiqq.expo_components_app"
     },
     "web": {
       "output": "static",
@@ -44,6 +45,12 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "b1a5a350-e2bd-4f62-abe4-f27ebde80595"
+      }
     }
   }
 }
